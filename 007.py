@@ -11,7 +11,7 @@ prime_counter = 1
 
 while prime_counter <= 10_001:
     prime = True
-    for n in range(2, i):
+    for n in range(2, int(i**.5)+1):
         if i % n == 0:
             prime = False
             break
