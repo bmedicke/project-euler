@@ -3,19 +3,14 @@
 (a, b) = (1, 2)
 sum = 2
 
-while True:
+while b < 4_000_000:
     a = a + b
     b = a + b
 
-    if (b > 4_000_000):
-        break
-
     print(a, b)
 
-    if (a % 2 == 0):
-        sum += a
-
-    if (b % 2 == 0):
-        sum += b
+    for n in (a, b):
+        if n%2 == 0:
+            sum+=n
 
 print(sum)
