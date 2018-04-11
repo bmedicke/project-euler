@@ -10,22 +10,21 @@ The square root of two is 1.41421356237309504880..., and the digital sum of the 
 For the first one hundred natural numbers, find the total of the digital sums of the first one hundred decimal digits for all the irrational square roots.
 """
 
-decimal.getcontext().prec = 102
-
+decimal.getcontext().prec = 102 # enough precision to avoid rounding errors.
 supersum = 0
-for i in range(2, 100):
+
+for i in range(2, 100): # 0,1 and 100 have an int square root.
     sum = 0
     imaginary = decimal.Decimal(i).sqrt()
 
     try:
-        imaginary.as_tuple()[1][1]
-    except:
+        imaginary.as_tuple()[1][1] # tuple out of range for rational numbers.
+    except IndexError:
         continue
 
-    d = str(imaginary).replace('.', '')[:100]
-    for n in d:
-        sum += int(n)
-    print(i, d, sum, sep='\t')
+    digits = str(imaginary).replace('.', '')[:100]
+    for digit in digits:
+        sum += int(digit)
+    print(i, digits, sum, sep='\t')
     supersum += sum
-
 print(supersum)
