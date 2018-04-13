@@ -25,10 +25,10 @@ for a in range(1, 1001):
             str(c).split('.')[1][1]
             continue
         except IndexError:
-            pass
+            c = int(c)
 
-        if int(a+b+c) == 1000:
+        if a+b+c == 1000:
             print(a, b, c, a+b+c)
             solution = a * b * c
-            print(int(solution))
+            print(solution)
             sys.exit(0)
